@@ -1,0 +1,223 @@
+/* =====================================================================
+   Cosmic theme: rich purples & indigos, warm cream text, soft rounded
+   panels and tiles. Loaded after styles.css and overrides its palette.
+   ===================================================================== */
+:root {
+  --bg: #0d0820;
+  --panel: rgba(36, 22, 74, 0.72);
+  --panel-2: rgba(58, 38, 112, 0.78);
+  --line: rgba(160, 130, 230, 0.22);
+  --line-2: rgba(180, 150, 245, 0.38);
+  --text: #f7eedc;
+  --muted: #bcaedb;
+  --accent: #c7b2ff;
+  --accent-2: #7fe3ff;
+  --good: #8ee6a0;
+  --bad: #ff8a8a;
+  --warn: #ffd27a;
+  --gold: #f2c76b;
+  --radius: 20px;
+}
+body {
+  font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 10%, rgba(126, 72, 214, 0.35), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 85% 85%, rgba(214, 72, 170, 0.22), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 60% 40%, rgba(60, 40, 140, 0.35), transparent 75%),
+    var(--bg) fixed;
+}
+h2 { font-size: 17px; font-weight: 800; letter-spacing: 0.01em; }
+
+.topbar, .footer { background: rgba(18, 10, 42, 0.72); border-color: var(--line); }
+.brand h1 { font-weight: 900; font-size: 20px; }
+.brand h1 span { color: var(--accent); font-weight: 700; }
+.step.active { background: linear-gradient(180deg, #f7eedc, #e2d3b4); color: #2a1a52; border-color: transparent; font-weight: 700; }
+.step.active b { background: #2a1a52; color: #f7eedc; }
+
+.panel {
+  background: linear-gradient(180deg, rgba(48, 30, 98, 0.78), rgba(28, 16, 62, 0.82));
+  border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(8, 2, 30, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Buttons: soft pills */
+.btn { border-radius: 999px; border-color: var(--line-2); background: rgba(90, 64, 160, 0.45); font-weight: 700; }
+.btn:hover:not(:disabled) { border-color: var(--accent); background: rgba(120, 90, 200, 0.55); }
+.btn.ghost { background: rgba(247, 238, 220, 0.12); }
+.btn.sm { padding: 6px 14px; }
+.btn.primary {
+  background: linear-gradient(180deg, #a98bff, #6c4ad6); border-color: #c7b2ff; color: #fffaf0;
+  box-shadow: 0 6px 22px rgba(124, 88, 230, 0.45);
+}
+.btn.primary:hover:not(:disabled) { background: linear-gradient(180deg, #b9a0ff, #7b58e6); }
+.btn.danger { border-color: rgba(255, 138, 138, 0.5); color: #ffc4c4; background: rgba(255, 138, 138, 0.08); }
+.stack-actions .btn { background: rgba(247, 238, 220, 0.9); color: #2a1a52; border-color: transparent; }
+.stack-actions .btn:hover:not(:disabled) { background: #fffaf0; }
+
+/* Parts library */
+.part-btn {
+  position: relative; border-radius: 16px; padding: 8px 12px 8px 8px;
+  background: linear-gradient(180deg, rgba(74, 50, 140, 0.55), rgba(46, 28, 96, 0.55)); border-color: var(--line);
+}
+.part-btn:hover { border-color: var(--accent); background: linear-gradient(180deg, rgba(96, 66, 176, 0.65), rgba(58, 36, 118, 0.65)); }
+.part-icon-wrap {
+  width: 42px; height: 42px; flex: none; display: grid; place-items: center; border-radius: 12px;
+  background: radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.16), rgba(20, 10, 50, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.part-icon { filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.45)); }
+.plus {
+  display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; flex: none;
+  border: 1.5px solid var(--muted); color: var(--text); font-size: 15px; line-height: 1;
+}
+.pstats { color: var(--muted); }
+.part-blueprint {
+  position: fixed; width: 220px; padding: 6px; border-radius: 14px; background: #120a2e; border: 1px solid var(--line-2);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55); opacity: 0; pointer-events: none; transition: opacity 0.15s; z-index: 50;
+  left: 300px; top: 50%; transform: translateY(-50%);
+}
+.part-blueprint img { width: 100%; display: block; border-radius: 9px; }
+.part-blueprint span { display: block; font-size: 10.5px; color: var(--muted); padding: 4px 4px 0; letter-spacing: 0.06em; text-transform: uppercase; }
+.part-btn:hover .part-blueprint, .part-btn:focus-visible .part-blueprint { opacity: 1; }
+@media (max-width: 1100px) { .part-blueprint { display: none; } }
+
+/* Target cards */
+.target-card { border-radius: 18px; background: linear-gradient(120deg, rgba(74, 50, 140, 0.5), rgba(30, 18, 66, 0.5)); border-color: var(--line); }
+.target-card.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset, 0 8px 26px rgba(124, 88, 230, 0.3); background: linear-gradient(120deg, rgba(110, 78, 200, 0.55), rgba(40, 24, 86, 0.55)); }
+
+/* Rocket preview and stack */
+.preview-wrap { border-radius: 18px; border-color: var(--line-2); background: radial-gradient(ellipse at 50% 100%, rgba(140, 100, 255, 0.18), transparent 60%), rgba(14, 8, 36, 0.45); }
+.stage-block { border-radius: 16px; background: rgba(20, 12, 48, 0.45); border-color: var(--line); }
+.stage-label { color: var(--accent); }
+.stack-row { border-radius: 10px; }
+.stack-row.sel { border-color: var(--accent); background: rgba(199, 178, 255, 0.12); }
+.row-btns button { border-radius: 7px; border-color: var(--line-2); background: rgba(247, 238, 220, 0.06); }
+
+/* Mission check tiles */
+.stat { border-radius: 16px; background: linear-gradient(180deg, rgba(90, 64, 170, 0.5), rgba(52, 32, 110, 0.5)); border-color: var(--line); }
+.stat.good { border-color: rgba(142, 230, 160, 0.55); }
+.stat.bad { border-color: rgba(255, 138, 138, 0.55); }
+.dv-bar { background: rgba(247, 238, 220, 0.1); height: 14px; }
+.dv-fill.good { background: linear-gradient(90deg, #7a5cff, #7fe3ff); box-shadow: 0 0 12px rgba(127, 227, 255, 0.6); }
+.dv-fill.mid { background: linear-gradient(90deg, #b07a2a, var(--warn)); }
+.dv-fill.bad { background: linear-gradient(90deg, #b04a5a, var(--bad)); }
+.stage-dvs { color: var(--muted); }
+.check { border-radius: 12px; align-items: center; }
+.check-icon { display: grid; }
+.check.fail { background: rgba(255, 138, 138, 0.08); border-color: rgba(255, 138, 138, 0.28); }
+.check.warn { background: rgba(255, 210, 122, 0.08); border-color: rgba(255, 210, 122, 0.28); }
+
+/* Astronaut cat */
+.astro-cat { display: flex; align-items: flex-end; justify-content: flex-end; gap: 6px; margin-top: -4px; }
+.astro-cat svg { flex: none; animation: cat-float 4s ease-in-out infinite; filter: drop-shadow(0 6px 10px rgba(10, 0, 40, 0.5)); }
+.astro-cat.happy .ac-paw { animation: cat-wave 1.6s ease-in-out infinite; transform-origin: 36px 98px; transform-box: view-box; }
+.astro-bubble {
+  max-width: 180px; padding: 8px 11px; border-radius: 14px 14px 4px 14px; margin-bottom: 44px;
+  background: #f7eedc; color: #2a1a52; font-size: 12px; font-weight: 700; line-height: 1.3;
+  box-shadow: 0 6px 18px rgba(10, 0, 40, 0.35);
+}
+.astro-cat.worried .astro-bubble { background: #ffe1d6; }
+@keyframes cat-float { 50% { transform: translateY(-5px) rotate(-2deg); } }
+@keyframes cat-wave { 50% { transform: rotate(-18deg); } }
+@media (prefers-reduced-motion: reduce) { .astro-cat svg, .astro-cat .ac-paw { animation: none; } }
+
+/* Launch / result screens */
+.orbit-bar, .result-card { border-radius: var(--radius); background: linear-gradient(180deg, rgba(48, 30, 98, 0.8), rgba(28, 16, 62, 0.85)); border-color: var(--line); }
+.orbit-canvas-wrap { border-radius: var(--radius); border-color: var(--line); }
+.flight-cam { border-radius: 18px; border-color: var(--line-2); }
+.planet-card { border-radius: 16px; background: rgba(28, 16, 62, 0.94); border-color: var(--line-2); }
+.result-tip { border-radius: 14px; background: rgba(199, 178, 255, 0.1); border-color: rgba(199, 178, 255, 0.3); }
+.info { border-color: var(--muted); color: var(--muted); }
+.info-bubble { background: #1c1040; border-color: var(--line-2); border-radius: 12px; }
+
+/* Keep Mission Check compact so the launch button stays in view */
+.checklist { gap: 10px; }
+.check-items { gap: 2px; }
+.check { padding: 4px 8px; }
+.astro-cat svg { width: 78px; height: 78px; }
+.astro-bubble { margin-bottom: 36px; }
+
+/* Technical-view blueprint: expands inside the part button on hover (no clipping) */
+.part-btn { flex-wrap: wrap; }
+.part-btn .part-blueprint {
+  position: static; transform: none; opacity: 1; box-shadow: none; z-index: auto;
+  order: 10; flex-basis: 100%; width: auto; padding: 0; border: 0; background: none;
+  max-height: 0; overflow: hidden; transition: max-height 0.25s ease, margin 0.25s ease;
+}
+.part-btn:hover .part-blueprint, .part-btn:focus-visible .part-blueprint { max-height: 190px; margin-top: 8px; }
+.part-btn .part-blueprint img { border: 1px solid var(--line-2); }
+@media (prefers-reduced-motion: reduce) { .part-btn .part-blueprint { transition: none; } }
+
+/* Build hangar backdrop behind the rocket preview */
+.preview-wrap.hangar {
+  border-style: solid; overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(40, 20, 90, 0.55) 0%, rgba(20, 10, 50, 0.15) 45%, rgba(10, 5, 30, 0.35) 100%),
+    radial-gradient(ellipse 55% 45% at 50% 78%, rgba(199, 178, 255, 0.22), transparent 70%),
+    var(--hangar-img) center 62% / cover no-repeat,
+    #120a2e;
+  box-shadow: inset 0 0 60px rgba(8, 2, 30, 0.85);
+}
+.preview-wrap.hangar .preview-empty { color: #e8dcff; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8); }
+
+/* Part explainer: expands inside the part button on hover/focus */
+.part-btn .part-explain {
+  order: 10; flex-basis: 100%; display: grid; gap: 3px;
+  max-height: 0; overflow: hidden; transition: max-height 0.22s ease, margin 0.22s ease, padding 0.22s ease;
+  font-size: 12px; line-height: 1.35; color: var(--text); border-radius: 10px; background: rgba(13, 8, 32, 0.45); padding: 0 10px;
+}
+.part-explain b {
+  display: inline-block; min-width: 34px; margin-right: 4px; font-size: 10px; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+}
+.part-btn:hover .part-explain, .part-btn:focus-visible .part-explain { max-height: 90px; margin-top: 8px; padding: 7px 10px; }
+@media (prefers-reduced-motion: reduce) { .part-btn .part-explain { transition: none; } }
+.part-explain > span { display: grid; grid-template-columns: 38px 1fr; align-items: baseline; }
+.part-explain b { min-width: 0; margin: 0; }
+
+/* Keep the sky (constellation photo + starfield) BEHIND the UI. Both are positioned layers
+   inside .app, so without this they paint over every panel and dim all text and buttons. */
+.space-bg, .starfield { z-index: -1; }
+.topbar, .main, .footer { position: relative; z-index: 1; }
+
+/* Three mission targets side by side */
+.target-picker { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.target-card { padding: 9px 10px; gap: 9px; }
+.target-card .planet-ball { width: 30px; height: 30px; }
+@media (max-width: 760px) { .target-picker { grid-template-columns: 1fr; } }
+
+/* ---------- Certificate ---------- */
+.cert-overlay {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px;
+  background: rgba(8, 4, 24, 0.72); backdrop-filter: blur(6px); animation: cert-in 0.35s ease;
+}
+.cert-modal { width: min(1100px, 100%); max-height: 100%; overflow: auto; display: flex; flex-direction: column; gap: 12px; }
+.cert-controls {
+  display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px;
+  padding: 12px 14px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line-2);
+}
+.cert-name { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.cert-name input {
+  width: min(320px, 70vw); padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line-2);
+  background: rgba(255, 255, 255, 0.92); color: #2a1a52; font: 600 15px Nunito, system-ui, sans-serif;
+}
+.cert-name input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.cert-buttons { display: flex; gap: 8px; }
+.cert-svg { width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55); }
+.btn.gold {
+  background: linear-gradient(180deg, #ffe08a, #e0a93a); color: #3a2405; border-color: #f2c76b;
+  box-shadow: 0 6px 22px rgba(224, 169, 58, 0.45);
+}
+.btn.gold:hover:not(:disabled) { background: linear-gradient(180deg, #ffe9a8, #eab448); }
+.result-actions { flex-wrap: wrap; }
+@keyframes cert-in { from { opacity: 0; transform: scale(0.97); } }
+@media (prefers-reduced-motion: reduce) { .cert-overlay { animation: none; } }
+
+/* Print only the certificate, full page, landscape */
+@media print {
+  @page { size: landscape; margin: 0; }
+  body * { visibility: hidden !important; }
+  .cert-svg, .cert-svg * { visibility: visible !important; }
+  .cert-overlay { position: static; background: none; backdrop-filter: none; padding: 0; }
+  .cert-svg { position: fixed; inset: 0; width: 100vw; height: 100vh; border-radius: 0; box-shadow: none; }
+}

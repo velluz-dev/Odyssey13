@@ -1,0 +1,104 @@
+/* =====================================================================
+   Light mode: soft lavender-cream daylight version of the cosmic theme.
+   Active when <html data-theme="light">. Space views (orbit map, flight
+   camera, rocket hangar) stay dark on purpose: they show space.
+   ===================================================================== */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f5f0ff;
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-2: #ffffff;
+  --line: rgba(108, 74, 214, 0.18);
+  --line-2: rgba(108, 74, 214, 0.32);
+  --text: #2a1a52;
+  --muted: #6b5a94;
+  --accent: #6c4ad6;
+  --good: #1f8f4a;
+  --bad: #c9354a;
+  --warn: #a8650a;
+  --gold: #b07a14;
+}
+[data-theme='light'] body {
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 10%, rgba(169, 139, 255, 0.28), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 85% 85%, rgba(255, 170, 210, 0.22), transparent 70%),
+    linear-gradient(180deg, #f7f2ff, #efe7fb) fixed;
+}
+[data-theme='light'] .space-bg,
+[data-theme='light'] .starfield { display: none; }
+
+[data-theme='light'] .topbar,
+[data-theme='light'] .footer { background: rgba(255, 255, 255, 0.75); border-color: var(--line); }
+[data-theme='light'] .step b { background: #e6dcfb; color: var(--text); }
+[data-theme='light'] .step.active { background: linear-gradient(180deg, #6c4ad6, #5636b8); color: #fff; }
+[data-theme='light'] .step.active b { background: #fff; color: #5636b8; }
+
+[data-theme='light'] .panel,
+[data-theme='light'] .orbit-bar,
+[data-theme='light'] .result-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 246, 255, 0.92));
+  box-shadow: 0 10px 30px rgba(80, 50, 160, 0.12), inset 0 1px 0 #fff;
+}
+
+/* Buttons */
+[data-theme='light'] .btn { background: #fff; border-color: var(--line-2); color: var(--text); }
+[data-theme='light'] .btn:hover:not(:disabled) { background: #f1eaff; border-color: var(--accent); }
+[data-theme='light'] .btn.ghost { background: rgba(108, 74, 214, 0.06); }
+[data-theme='light'] .btn.primary { background: linear-gradient(180deg, #8a6bf0, #5b3cc8); color: #fff; border-color: #5b3cc8; box-shadow: 0 6px 18px rgba(91, 60, 200, 0.3); }
+[data-theme='light'] .btn.primary:hover:not(:disabled) { background: linear-gradient(180deg, #9a7ef5, #6545d6); }
+[data-theme='light'] .btn.danger { background: #fff4f5; border-color: rgba(201, 53, 74, 0.45); color: var(--bad); }
+[data-theme='light'] .stack-actions .btn { background: #ede5ff; color: var(--text); }
+
+/* Parts library */
+[data-theme='light'] .part-btn { background: #fff; border-color: var(--line); }
+[data-theme='light'] .part-btn:hover { background: #f6f1ff; border-color: var(--accent); }
+[data-theme='light'] .part-icon-wrap { background: radial-gradient(circle at 40% 30%, #ffffff, #d9cff0); border-color: rgba(108, 74, 214, 0.15); }
+[data-theme='light'] .plus { border-color: var(--accent); color: var(--accent); }
+[data-theme='light'] .part-btn .part-explain { background: #f3edff; }
+
+/* Target cards, stack, checklist */
+[data-theme='light'] .target-card { background: #fff; border-color: var(--line); }
+[data-theme='light'] .target-card.active { background: linear-gradient(120deg, #efe7ff, #fff); box-shadow: 0 0 0 1px var(--accent) inset, 0 6px 18px rgba(108, 74, 214, 0.18); }
+[data-theme='light'] .stage-block { background: rgba(255, 255, 255, 0.7); }
+[data-theme='light'] .stack-row:hover { background: rgba(108, 74, 214, 0.05); }
+[data-theme='light'] .stack-row.sel { background: rgba(108, 74, 214, 0.1); }
+[data-theme='light'] .row-btns button { background: #fff; color: var(--text); }
+[data-theme='light'] .stat { background: linear-gradient(180deg, #ffffff, #f4eeff); }
+[data-theme='light'] .stat.good { border-color: rgba(31, 143, 74, 0.45); }
+[data-theme='light'] .stat.bad { border-color: rgba(201, 53, 74, 0.45); }
+[data-theme='light'] .dv-bar { background: rgba(108, 74, 214, 0.12); }
+[data-theme='light'] .dv-mark { background: rgba(42, 26, 82, 0.6); }
+[data-theme='light'] .check.fail { background: #fff1f3; border-color: rgba(201, 53, 74, 0.3); }
+[data-theme='light'] .check.warn { background: #fff7e8; border-color: rgba(168, 101, 10, 0.3); }
+[data-theme='light'] .astro-bubble { background: #ede5ff; }
+[data-theme='light'] .astro-cat.worried .astro-bubble { background: #ffe6e0; }
+
+/* Results, tooltips, cards */
+[data-theme='light'] .result-tip { background: #f3edff; }
+[data-theme='light'] .tl-dot { background: #fff; }
+[data-theme='light'] .tl.fail .tl-dot { background: #fff1f3; }
+[data-theme='light'] .info-bubble { background: #fff; color: var(--text); box-shadow: 0 8px 24px rgba(80, 50, 160, 0.18); }
+
+/* Space views keep their own dark styling: give them light-mode-friendly frames */
+[data-theme='light'] .orbit-canvas-wrap,
+[data-theme='light'] .flight-cam,
+[data-theme='light'] .preview-wrap.hangar { border-color: rgba(108, 74, 214, 0.35); }
+[data-theme='light'] .orbit-canvas-wrap { --text: #f7eedc; --muted: #bcaedb; }
+[data-theme='light'] .planet-card { background: rgba(28, 16, 62, 0.94); color: #f7eedc; --muted: #bcaedb; }
+[data-theme='light'] .orbit-hint { background: rgba(10, 6, 30, 0.82); color: #e8dcff; }
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--line-2); background: rgba(247, 238, 220, 0.08); color: var(--text); cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.theme-toggle:hover { background: rgba(199, 178, 255, 0.18); }
+.theme-toggle:active { transform: scale(0.94); }
+[data-theme='light'] .theme-toggle { background: #fff; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+
+/* The flight camera is a dark space scene: keep dark-mode colours inside it */
+[data-theme='light'] .flight-cam {
+  --text: #f7eedc; --muted: #bcaedb; --accent: #c7b2ff; --good: #8ee6a0; --bad: #ff8a8a; --line-2: rgba(180, 150, 245, 0.38);
+}
